@@ -3,7 +3,7 @@
 </template>
 
 <script>
-import API from "@/helpers/api";
+import API from "@/helpers/apiMock";
 import TaskCard from "@/components/TaskCard.vue";
 
 export default {
@@ -13,11 +13,10 @@ export default {
   data: () => ({
     tasksList: [],
   }),
-  methods: {
-    async getTasks() {
-      const response = await API.getTasks();
-      this.tasksList = response.data;
-    },
+  async created() {
+    const response = await API.getTasks();
+    this.tasksList = response;
   },
+  methods: {},
 };
 </script>
